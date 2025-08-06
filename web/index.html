@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立法院議案智慧查詢系統 - 首頁</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>立法院議案智慧查詢系統</h1>
+            <p>運用AI技術，讓您輕鬆掌握立法院議案趨勢與詳細資訊</p>
+            
+            <!-- 簡化的使用者引導區塊 -->
+            <div class="intro-guide">
+                <div class="intro-guide-content">
+                    <div class="icon">🤖</div>
+                    <div class="intro-guide-text">
+                        <h3>AI智慧分析系統</h3>
+                        <p>每張法案卡片都經過<span class="highlight">AI智慧分析</span>，點擊分類圖表或法案卡片即可查看詳細的AI分析結果。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 控制功能區塊 - 左右並排 -->
+            <div class="controls-wrapper">
+                <div class="controls-row">
+                    <!-- 左側：時間設定功能 -->
+                    <div class="time-range-container">
+                        <h3>📅 時間範圍</h3>
+                        <div class="time-controls">
+                            <div class="time-input-group">
+                                <label for="start-month">開始：</label>
+                                <select id="start-month">
+                                    <option value="">載入中...</option>
+                                </select>
+                            </div>
+                            <div class="time-input-group">
+                                <label for="end-month">結束：</label>
+                                <select id="end-month">
+                                    <option value="">載入中...</option>
+                                </select>
+                            </div>
+                            <div class="time-buttons">
+                                <button id="apply-time-range" class="time-btn">套用</button>
+                                <button id="reset-to-latest" class="time-btn">重設</button>
+                            </div>
+                        </div>
+                        <div id="current-time-range" class="current-range-display">
+                            目前顯示：載入中...
+                        </div>
+                    </div>
+                    
+                    <!-- 右側：搜尋功能 -->
+                    <div class="search-container">
+                        <h3>🔍 搜尋法案</h3>
+                        <div class="search-controls">
+                            <input type="text" id="search-input" placeholder="輸入關鍵字或立委名字..." />
+                            <div class="search-buttons">
+                                <button id="search-btn">搜尋</button>
+                                <button id="clear-search-btn">清除</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 導航連結 -->
+                <div class="navigation-links">
+                    <a href="/progress" class="nav-link">📊 查看進度分析</a>
+                    <a href="/party-analysis" class="nav-link">🏛️ 政黨提案分析</a>
+                    <a href="/about" class="nav-link">ℹ️ 本站公開資訊與問題回饋</a> 
+                </div>
+            </div>
+        </header>
+
+        <!-- 三欄式儀表板佈局 -->
+        <div class="dashboard-layout">
+            <!-- 左側：熱門法案排名 -->
+            <aside id="bill-ranking-panel" class="bill-ranking-panel">
+                <h2>🏆 熱門法案排名</h2>
+                <div id="ranking-container">
+                    <p class="loading-text">載入中...</p>
+                </div>
+            </aside>
+            
+            <!-- 中央：可視化圖表 -->
+            <section id="visualization-container" class="visualization-panel">
+                <p class="loading-text">正在生成法案趨勢圖...</p>
+            </section>
+            
+            <!-- 右側：法案列表 -->
+            <aside id="bill-list-panel" class="bill-list-panel">
+                <h2 id="bill-list-title">📋 請選擇一個分類</h2>
+                <div id="bill-container"></div>
+                <div id="pagination-container"></div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- 詳情視窗 -->
+    <div id="modal-overlay" class="hidden">
+        <div id="modal-content">
+            <button id="modal-close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+

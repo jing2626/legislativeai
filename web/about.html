@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>關於本站 - 立法院議案智慧查詢系統</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>關於本站</h1>
+            <p>透明、開放、易懂，是我們對公共事務的承諾。</p>
+
+            <div class="navigation-links">
+                <a href="/" class="nav-link">返回首頁</a>
+                <a href="/progress" class="nav-link">📊 查看進度分析</a>
+                <a href="/party-analysis" class="nav-link">🏛️ 政黨提案分析</a>
+            </div>
+            <div class="about-page-navigation">
+                <a href="#purpose-title" class="about-nav-link">網站目的</a>
+                <a href="#changelog-title" class="about-nav-link">更新日誌</a>
+                <a href="#roadmap-title" class="about-nav-link">未來更新</a>
+                <a href="#feedback-title" class="about-nav-link">問題回饋</a>
+                <a href="#transparency-title" class="about-nav-link">經費透明</a>
+                <a href="#donation-title" class="about-nav-link">募款資訊</a>
+            </div>
+        </header>
+
+        <main class="about-page-content">
+            <section id="purpose" class="about-section">
+                <h2 id="purpose-title">🎯 網站目的</h2>
+                <p>本站致力於打破立法資訊的高牆，我們相信每一位公民都應有權利輕鬆理解攸關自身權益的法案。</p>
+                <p>我們的核心目標是：</p>
+                <ul>
+                    <li><strong>立法白話文：</strong> 運用AI技術，將艱澀的法律條文轉化為人人都能懂的白話文，解釋修法的理由與可能影響。</li>
+                    <li><strong>清晰視覺化：</strong> 透過互動式圖表，呈現不同議題的立法趨勢，讓您一目了然地掌握立法院的關注焦點。</li>
+                    <li><strong>數據分析：</strong> 提供多維度的分析表格與數據，揭示法案背後的政黨合作與角力關係，讓資訊更加透明。</li>
+                </ul>
+            </section>
+
+            <section id="changelog" class="about-section">
+                <h2 id="changelog-title">📝 網站更新日誌</h2>
+                <div class="changelog-container">
+                    <div class="changelog-entry">
+                        <h3>v7.0 (2025-08-07) - 體驗優化</h3>
+                        <ul>
+                            <li>新增「關於本站」頁面，提升網站透明度。</li>
+                            <li>優化「關於本站」頁面樣式與字體大小。</li>
+                            <li>新增頁內快速導航功能與平滑滾動動畫。</li>
+                        </ul>
+                    </div>
+                    <div class="changelog-entry">
+                        <h3>v6.0 (2025-08-06) - 智慧分析升級</h3>
+                        <ul>
+                            <li>新增多月份時間範圍查詢功能。</li>
+                            <li>首頁新增「熱門法案排名」區塊。</li>
+                            <li>AI分析結果採用手風琴式介面，並優化排版。</li>
+                        </ul>
+                    </div>
+                    </div>
+            </section>
+
+            <section id="roadmap" class="about-section">
+                <h2 id="roadmap-title">🚀 未來更新藍圖 (募款連動)</h2>
+                <p>您的每一筆支持，都是我們前進的動力。當募款金額達到以下目標時，我們將會開發對應的新功能，讓網站更強大。</p>
+                <div class="roadmap-container">
+                    <div class="roadmap-goal" data-goal="100000">
+                        <h3>第一階段：總統公布施行進度與細節分析</h3>
+                        <p>追蹤最終總統公布並施行的法案，同時將這些法案進行更細節的分析。</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 0%;"></div>
+                            <span class="progress-bar-label">研發時間待訂</span>
+                        </div>
+                        <div class="progress-labels">
+                            <span class="current-funding">NT$ 0</span>
+                            <span class="percentage">0%</span>
+                            <span>目標 NT$ 100,000</span>
+                        </div>
+                    </div>
+                    <div class="roadmap-goal" data-goal="200000">
+                        <h3>第二階段：委員個人化數據儀表板</h3>
+                        <p>開發針對單一立法委員的提案分析頁面，包含其推出法案、關注領域等數據。</p>
+                        <div class="progress-bar">
+                            <div class="progress-bar-inner" style="width: 0%;"></div>
+                            <span class="progress-bar-label">研發時間待訂</span>
+                        </div>
+                        <div class="progress-labels">
+                            <span class="current-funding">NT$ 0</span>
+                            <span class="percentage">0%</span>
+                            <span>目標 NT$ 200,000</span>
+                        </div>
+                    </div>
+                    <div class="roadmap-goal" data-goal="999999">
+                        <h3>第三階段：你也有改變的可能!</h3>
+                        <p>想要什麼新功能嗎？有什麼好想法嗎？快來下方留言回饋~讓我們一起將改變成真!</p>
+                        <div class="progress-bar">
+                             <div class="progress-bar-inner" style="width: 0%;"></div>
+                             <span class="progress-bar-label">研發時間待訂</span>
+                        </div>
+                         <div class="progress-labels">
+                            <span class="current-funding">NT$ 0</span>
+                            <span class="percentage">0%</span>
+                            <span>目標 NT$ 待訂</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="feedback" class="about-section">
+                <h2 id="feedback-title">💬 問題與建議回饋</h2>
+                <p>發現網站有 bug？或是有很棒的功能建議？歡迎透過下方的表單告訴我們，您的回饋是我們改進的最大助力！</p>
+                <a href="https://docs.google.com/forms/your_form_link" target="_blank" class="nav-link feedback-btn">前往 Google 回饋表單</a>
+            </section>
+
+            <section id="transparency" class="about-section">
+                <h2 id="transparency-title">💰 網站經費透明</h2>
+                <p>我們承諾將所有募款用於網站的維運與發展，以下為主要的成本結構與經費使用狀況（每月更新）。</p>
+                <table class="transparency-table">
+                    <thead>
+                        <tr>
+                            <th>項目</th>
+                            <th>每月預估費用 (NT$)</th>
+                            <th>說明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>伺服器主機租用</td>
+                            <td>$500</td>
+                            <td>網站後端、資料庫與靜態檔案託管。</td>
+                        </tr>
+                        <tr>
+                            <td>AI 分析 API 費用</td>
+                            <td>$1,000 - $3,000</td>
+                            <td>用於處理法案文本分析，費用依用量浮動。</td>
+                        </tr>
+                        <tr>
+                            <td>人力維護網站 費用</td>
+                            <td>$0 - $30,000</td>
+                            <td>用於處理網站問題、回饋分析、debug、網站編程等人力費用，費用依實際用量浮動。</td>
+                        </tr>
+                        <tr class="summary-row">
+                            <td><strong>總計每月成本</strong></td>
+                            <td><strong>$1,500 - $33,500</strong></td>
+                            <td></td>
+                        </tr>
+                        <tr class="funding-row">
+                            <td><strong>目前總募款金額</strong></td>
+                            <td id="total-funding-amount"><strong>$0</strong></td>
+                            <td>感謝所有支持者！</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="donation" class="about-section">
+                <h2 id="donation-title">❤️ 支持我們 (募款資訊)</h2>
+                <p>若您認同我們的理念，歡迎小額支持我們持續營運，為台灣的國會透明化盡一份心力。</p>
+                <div class="donation-info-box">
+                    <h3>銀行轉帳</h3>
+                    <p><strong>銀行：</strong>玉山銀行 (808)</p>
+                    <p><strong>分行：</strong>數位分行</p>
+                    <p><strong>帳號：</strong>1234-567-890123</p>
+                    <p><strong>戶名：</strong>王小明</p>
+                </div>
+                 <div class="donation-links">
+                     <a href="#" class="nav-link donation-link">街口支付捐款</a>
+                     <a href="#" class="nav-link donation-link">LinePay 捐款</a>
+                 </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='about.js') }}"></script>
+</body>
+</html>

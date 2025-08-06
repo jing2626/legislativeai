@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立法院議案智慧查詢系統 - 政黨提案分析</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>政黨提案分析</h1>
+            <p>分析各政黨在立法院的提案參與情況與跨黨派合作模式</p>
+            
+            <!-- 控制功能區塊 -->
+            <div class="controls-wrapper">
+                <div class="controls-row">
+                    <!-- 左側：時間設定功能 -->
+                    <div class="time-range-container">
+                        <h3>📅 時間範圍</h3>
+                        <div class="time-controls">
+                            <div class="time-input-group">
+                                <label for="start-month">開始：</label>
+                                <select id="start-month">
+                                    <option value="">載入中...</option>
+                                </select>
+                            </div>
+                            <div class="time-input-group">
+                                <label for="end-month">結束：</label>
+                                <select id="end-month">
+                                    <option value="">載入中...</option>
+                                </select>
+                            </div>
+                            <div class="time-buttons">
+                                <button id="apply-time-range" class="time-btn">套用</button>
+                                <button id="reset-to-latest" class="time-btn">重設</button>
+                            </div>
+                        </div>
+                        <div id="current-time-range" class="current-range-display">
+                            目前顯示：載入中...
+                        </div>
+                    </div>
+                    
+                    <!-- 右側：統計資訊 -->
+                    <div class="stats-container">
+                        <h3>📊 統計資訊</h3>
+                        <div id="stats-display">
+                            <div class="stat-item">
+                                <span class="stat-label">總法案數：</span>
+                                <span id="total-bills" class="stat-value">載入中...</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">無黨籍參與率：</span>
+                                <span id="independent-rate" class="stat-value">載入中...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 導航連結 -->
+                <div class="navigation-links">
+                    <a href="/" class="nav-link">🏠 回到首頁</a>
+                    <a href="/progress" class="nav-link">📊 查看進度分析</a>
+                    <a href="/about" class="nav-link">ℹ️ 本站公開資訊與問題回饋</a> 
+                </div>
+            </div>
+        </header>
+
+        <!-- 主要內容區域 -->
+        <div class="party-analysis-layout">
+            <!-- 左側：圓餅圖 -->
+            <section class="chart-panel">
+                <h2>🏛️ 政黨提案分布</h2>
+                <div class="chart-container">
+                    <canvas id="party-chart"></canvas>
+                </div>
+                
+                <!-- 無黨籍統計框 -->
+                <div id="independent-stats" class="independent-stats-box">
+                    <h3>無黨籍參與統計</h3>
+                    <div class="independent-content">
+                        <div class="independent-count">
+                            <span class="count-label">參與法案數：</span>
+                            <span id="independent-count" class="count-value">0</span>
+                        </div>
+                        <div class="independent-rate-display">
+                            <span class="rate-label">參與比率：</span>
+                            <span id="independent-rate-display" class="rate-value">0%</span>
+                        </div>
+                        <button id="view-independent-bills" class="view-bills-btn">查看法案</button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 右側：法案列表 -->
+            <section class="bill-list-panel">
+                <h2 id="bill-list-title">📋 請點擊圓餅圖選擇政黨</h2>
+                <div id="bill-container"></div>
+                <div id="pagination-container"></div>
+            </section>
+        </div>
+    </div>
+
+    <!-- 詳情視窗 -->
+    <div id="modal-overlay" class="hidden">
+        <div id="modal-content">
+            <button id="modal-close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='party-analysis.js') }}"></script>
+</body>
+</html>
+

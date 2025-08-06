@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立法院議案智慧查詢系統 - 進度查詢</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>立法院議案智慧查詢系統</h1>
+            <p>法案進度追蹤與查詢</p>
+            
+            <!-- 簡化的使用者引導區塊 -->
+            <div class="intro-guide">
+                <div class="intro-guide-content">
+                    <div class="icon">📊</div>
+                    <div class="intro-guide-text">
+                        <h3>進度追蹤系統</h3>
+                        <p>查看各進度的法案數量，點擊進度標籤查看詳細法案列表，也可按照<span class="highlight">進度和種類</span>進行篩選。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 控制功能區塊 -->
+            <div class="controls-wrapper">
+                <div class="controls-row">
+                    <!-- 左側：時間設定功能 -->
+                    <div class="time-range-container">
+                        <h3>📅 時間範圍</h3>
+                        <div class="time-controls">
+                            <div class="time-input-group">
+                                <label for="start-month">開始：</label>
+                                <select id="start-month">
+                                    <option value="">載入中...</option>
+                                </select>
+                            </div>
+                            <div class="time-input-group">
+                                <label for="end-month">結束：</label>
+                                <select id="end-month">
+                                    <option value="">載入中...</option>
+                                </select>
+                            </div>
+                            <div class="time-buttons">
+                                <button id="apply-time-range" class="time-btn">套用</button>
+                                <button id="reset-to-latest" class="time-btn">重設</button>
+                            </div>
+                        </div>
+                        <div id="current-time-range" class="current-range-display">
+                            目前顯示：載入中...
+                        </div>
+                    </div>
+                    
+                    <!-- 右側：篩選功能 -->
+                    <div class="filter-container">
+                        <h3>🔍 篩選條件</h3>
+                        <div class="filter-controls">
+                            <div class="filter-group">
+                                <label for="category-filter">法案種類：</label>
+                                <select id="category-filter">
+                                    <option value="">全部種類</option>
+                                </select>
+                            </div>
+                            <div class="filter-buttons">
+                                <button id="clear-filters-btn" class="time-btn">清除篩選</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 導航連結 -->
+                <div class="navigation-links">
+                    <a href="/" class="nav-link">🏠 回到首頁</a>
+                    <a href="/party-analysis" class="nav-link">🏛️ 政黨提案分析</a>
+                    <a href="/about" class="nav-link">ℹ️ 本站公開資訊與問題回饋</a> 
+                </div>
+            </div>
+        </header>
+
+        <!-- 進度統計區塊 -->
+        <div class="progress-stats-section">
+            <h2>📋 法案進度統計</h2>
+            <div class="progress-stats-container">
+                <div class="progress-stat-card" data-progress="一讀">
+                    <div class="progress-stat-icon">1️⃣</div>
+                    <div class="progress-stat-content">
+                        <h3>一讀</h3>
+                        <div class="progress-stat-count" id="count-一讀">0</div>
+                        <p>筆法案</p>
+                    </div>
+                </div>
+                <div class="progress-stat-card" data-progress="委員會審議">
+                    <div class="progress-stat-icon">🏛️</div>
+                    <div class="progress-stat-content">
+                        <h3>委員會審議</h3>
+                        <div class="progress-stat-count" id="count-委員會審議">0</div>
+                        <p>筆法案</p>
+                    </div>
+                </div>
+                <div class="progress-stat-card" data-progress="二讀">
+                    <div class="progress-stat-icon">2️⃣</div>
+                    <div class="progress-stat-content">
+                        <h3>二讀</h3>
+                        <div class="progress-stat-count" id="count-二讀">0</div>
+                        <p>筆法案</p>
+                    </div>
+                </div>
+                <div class="progress-stat-card" data-progress="三讀">
+                    <div class="progress-stat-icon">3️⃣</div>
+                    <div class="progress-stat-content">
+                        <h3>三讀</h3>
+                        <div class="progress-stat-count" id="count-三讀">0</div>
+                        <p>筆法案</p>
+                    </div>
+                </div>
+                <div class="progress-stat-card" data-progress="其他">
+                    <div class="progress-stat-icon">📄</div>
+                    <div class="progress-stat-content">
+                        <h3>其他</h3>
+                        <div class="progress-stat-count" id="count-其他">0</div>
+                        <p>筆法案</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 法案列表區塊 -->
+        <div class="bill-list-section">
+            <div class="bill-list-header">
+                <h2 id="bill-list-title">📋 請選擇一個進度</h2>
+                <div class="bill-list-info">
+                    <span id="bill-count-info">共 0 筆法案</span>
+                </div>
+            </div>
+            <div id="bill-container" class="bill-container">
+                <p class="loading-text">請點擊上方進度卡片查看法案列表</p>
+            </div>
+            <div id="pagination-container" class="pagination-container"></div>
+        </div>
+    </div>
+
+    <!-- 詳情視窗 -->
+    <div id="modal-overlay" class="hidden">
+        <div id="modal-content">
+            <button id="modal-close-btn">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='progress_script.js') }}"></script>
+</body>
+</html>
+

@@ -1,0 +1,1782 @@
+/* static/style.css - 北歐極簡溫暖風格 + 淺色木質調 */
+
+/* --- 基礎與字體設定 --- */
+:root {
+    /* 淺色木質調色彩方案 */
+    --bg-color: #faf8f5; /* 溫暖的象牙白背景 */
+    --card-bg-color: #ffffff; /* 純白卡片背景 */
+    --wood-light: #f7f3ed; /* 淺木色 */
+    --wood-medium: #ede4d3; /* 中等木色 */
+    --wood-dark: #d4c4a8; /* 深木色 */
+    
+    --primary-text-color: #3c3c3c; /* 主要文字 - 深炭灰色 */
+    --secondary-text-color: #8b7355; /* 次要文字 - 木質棕色 */
+    --accent-color: #6b8e7f; /* 點綴色 - 森林綠 */
+    --accent-color-light: #e8f0ed; /* 點綴色淺色系 */
+    --warm-accent: #c49b7a; /* 溫暖點綴色 - 淺棕色 */
+    --border-color: #e8e0d6; /* 邊框顏色 - 淺木色邊框 */
+    --shadow-color: rgba(139, 115, 85, 0.1); /* 木質調陰影 */
+    
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans CJK TC", sans-serif;
+    --border-radius: 8px;
+    --border-radius-large: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-color) 0%, var(--wood-light) 100%);
+    color: var(--primary-text-color);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    font-size: 16px;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: transparent;
+    padding: 1rem;
+}
+
+/* --- 頁首 Header --- */
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    border-radius: var(--border-radius-large);
+    color: var(--primary-text-color);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* 添加木質紋理效果 */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 115, 85, 0.03) 2px,
+            rgba(139, 115, 85, 0.03) 4px
+        );
+    border-radius: var(--border-radius-large);
+    pointer-events: none;
+}
+
+header h1 {
+    color: var(--primary-text-color);
+    font-size: 2.4rem;
+    margin-bottom: 0.8rem;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    position: relative;
+    z-index: 1;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 1rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 簡化的使用者引導區塊 --- */
+.intro-guide {
+    background: linear-gradient(135deg, var(--accent-color-light) 0%, var(--wood-light) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem 1.5rem;
+    margin: 0 auto 1rem auto;
+    max-width: 700px;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.intro-guide-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.intro-guide .icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+    flex-shrink: 0;
+}
+
+.intro-guide-text h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--primary-text-color);
+    font-weight: 500;
+}
+
+.intro-guide-text p {
+    margin: 0;
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.intro-guide-text .highlight {
+    color: var(--accent-color);
+    font-weight: 600;
+    background-color: rgba(107, 142, 127, 0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+/* --- 控制區塊包裝器 --- */
+.controls-wrapper {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    border-radius: var(--border-radius-large);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+
+/* 左右並排的控制區塊 */
+.controls-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+/* --- 時間範圍設定 --- */
+.time-range-container {
+    padding: 0;
+}
+
+.time-range-container h3 {
+    color: var(--primary-text-color);
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.time-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.time-input-group {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.time-input-group label {
+    color: var(--secondary-text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.time-input-group select {
+    padding: 6px 10px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg-color);
+    color: var(--primary-text-color);
+    font-size: 0.85rem;
+    min-width: 120px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+}
+
+.time-input-group select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(107, 142, 127, 0.1);
+}
+
+.time-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.time-btn, #search-btn, #clear-search-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-family: var(--font-family);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+#apply-time-range, #search-btn {
+    background-color: var(--accent-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(107, 142, 127, 0.3);
+}
+
+#apply-time-range:hover, #search-btn:hover {
+    background-color: #5a7a6b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 142, 127, 0.4);
+}
+
+#reset-to-latest, #clear-search-btn {
+    background-color: var(--wood-medium);
+    color: var(--primary-text-color);
+    border: 1px solid var(--border-color);
+}
+
+#reset-to-latest:hover, #clear-search-btn:hover {
+    background-color: var(--wood-dark);
+    transform: translateY(-1px);
+}
+
+.current-range-display {
+    color: var(--secondary-text-color);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--wood-light);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+/* --- 搜尋功能 --- */
+.search-container {
+    padding: 0;
+}
+
+.search-container h3 {
+    color: var(--primary-text-color);
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.search-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+#search-input {
+    padding: 8px 12px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    width: 100%;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: var(--card-bg-color);
+    color: var(--primary-text-color);
+    font-family: var(--font-family);
+}
+
+#search-input::placeholder {
+    color: var(--secondary-text-color);
+}
+
+#search-input:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(107, 142, 127, 0.1);
+}
+
+.search-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* --- 導航連結 --- */
+.navigation-links {
+    text-align: center;
+    display: flex;          /* 新增：將此容器設定為 Flexbox 佈局 */
+    justify-content: center;/* 新增：讓所有項目在容器內水平置中 */
+    gap: 1.0rem;
+}
+
+.nav-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--warm-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(196, 155, 122, 0.3);
+}
+
+.nav-link:hover {
+    background-color: #b8896a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(196, 155, 122, 0.4);
+}
+
+/* --- 三欄式儀表板佈局 --- */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* --- 面板通用樣式 --- */
+.bill-ranking-panel, .visualization-panel, .bill-list-panel {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+/* 添加木質紋理效果 */
+.bill-ranking-panel::before, .visualization-panel::before, .bill-list-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            rgba(139, 115, 85, 0.02) 20px,
+            rgba(139, 115, 85, 0.02) 40px
+        );
+    border-radius: var(--border-radius-large);
+    pointer-events: none;
+}
+
+.bill-ranking-panel h2, .bill-list-panel h2 {
+    margin-top: 0;
+    color: var(--primary-text-color);
+    padding-bottom: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    border-bottom: 2px solid var(--border-color);
+    z-index: 1;
+}
+
+.bill-ranking-panel h2::after, .bill-list-panel h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+/* --- 法案排名 --- */
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    border-radius: var(--border-radius);
+    margin-bottom: 0.3rem;
+    position: relative;
+    z-index: 1;
+}
+
+.ranking-item:last-child {
+    border-bottom: none;
+}
+
+.ranking-item:hover {
+    background-color: var(--accent-color-light);
+    transform: translateX(4px);
+}
+
+.ranking-number {
+    font-weight: 600;
+    color: var(--accent-color);
+    width: 30px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.ranking-title {
+    flex: 1;
+    margin-left: 0.8rem;
+    font-size: 0.85rem;
+    color: var(--primary-text-color);
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.ranking-count {
+    color: var(--secondary-text-color);
+    font-size: 0.75rem;
+    background-color: var(--wood-medium);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+/* --- 可視化圖表 --- */
+.visualization-panel {
+    min-height: 400px;
+}
+
+.category-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+
+.category-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding: 0.6rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.category-bar-wrapper:hover {
+    background-color: var(--accent-color-light);
+}
+
+.category-bar-wrapper.active {
+    background-color: rgba(107, 142, 127, 0.15);
+}
+
+.category-label {
+    width: 140px;
+    text-align: right;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    font-size: 0.9rem;
+}
+
+.category-bar {
+    flex-grow: 1;
+    background-color: var(--wood-medium);
+    border-radius: var(--border-radius);
+    height: 32px;
+    overflow: hidden;
+}
+
+.category-bar-inner {
+    background-color: var(--accent-color);
+    height: 100%;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+    padding-right: 0.8rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    min-width: 40px;
+    transition: width 0.5s ease-in-out;
+    font-weight: 500;
+}
+
+/* --- 法案卡片列表 --- */
+.bill-card {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 0.8rem;
+    opacity: 0;
+    transform: translateY(20px);
+    position: relative;
+    z-index: 1;
+}
+
+.bill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), var(--warm-accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.bill-card.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bill-card:hover {
+    box-shadow: 0 6px 20px var(--shadow-color);
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.bill-card:hover::before {
+    transform: scaleX(1);
+}
+
+.bill-card h4 {
+    margin-top: 0;
+    font-size: 0.95rem;
+    color: var(--primary-text-color);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+}
+
+.bill-card .meta {
+    font-size: 0.8rem;
+    color: var(--secondary-text-color);
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+/* --- ✨ 新增的樣式 ✨ --- */
+.bill-progress {
+    font-size: 0.8rem;
+    color: var(--secondary-text-color); /* 使用次要文字顏色 */
+    margin-top: 0.8rem; /* 與上方提案人資訊間的距離 */
+    margin-bottom: 0;
+    background-color: var(--wood-light); /* 使用淺木色背景 */
+    padding: 4px 8px;
+    border-radius: var(--border-radius);
+    display: inline-block; /* 讓背景色只包覆文字寬度 */
+    border: 1px solid var(--border-color);
+}
+
+.bill-progress strong {
+    color: var(--primary-text-color); /* 讓「審查進度：」標題更清晰 */
+}
+/* --- ✨ 樣式結束 ✨ --- */
+
+/* --- 分頁 --- */
+#pagination-container {
+    text-align: center;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+#pagination-container button {
+    padding: 6px 12px;
+    margin: 0 3px;
+    border: 2px solid var(--border-color);
+    background-color: var(--card-bg-color);
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    font-family: var(--font-family);
+    font-size: 0.85rem;
+}
+
+#pagination-container button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-1px);
+}
+
+#pagination-container button.active {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* --- 詳情視窗 (Modal) --- */
+.hidden {
+    display: none !important;
+}
+
+#modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(60, 60, 60, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#modal-content {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    border-radius: var(--border-radius-large);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(139, 115, 85, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--wood-medium);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-close-btn:hover {
+    background-color: var(--wood-dark);
+    transform: rotate(90deg);
+}
+
+#modal-body {
+    padding: 2.5rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+#modal-body h2 {
+    margin-top: 0;
+    padding-right: 3rem;
+    color: var(--primary-text-color);
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+#modal-body .detail-section h3 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* --- 手風琴 (Accordion) --- */
+
+/* --- 條文差異比較表格 --- */
+.comparison-table {
+    line-height: 1.7;
+}
+
+/* 每一組條文比較的容器 */
+.comparison-item {
+    /* 用粗的底線來區隔不同的條文 */
+    border-bottom: 3px solid var(--border-color); 
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* 最後一組條文不需要底線和間距 */
+.comparison-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* 用來並排的行 */
+.comparison-row {
+    display: flex;
+    gap: 1.5rem; /* 左右欄之間的間距 */
+}
+
+/* 左右兩欄的通用樣式 */
+.comparison-col {
+    flex: 1; /* 讓左右兩欄平分寬度 */
+    min-width: 0; /* flexbox 的一個 hack，防止內容溢出 */
+}
+
+/* 修正條文/現行條文的標題 */
+.comparison-col h4 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: var(--primary-text-color);
+    font-weight: 500;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* 只針對「修正條文」那一欄，在右邊加上垂直區隔線 */
+.comparison-row .comparison-col:first-child {
+    border-right: 1px solid var(--border-color);
+    padding-right: 1.5rem;
+}
+
+/* 說明的行 */
+.explanation-row {
+    margin-top: 1.5rem;
+}
+
+/* 說明的大格子樣式 */
+.comparison-col.explanation {
+    flex-basis: 100%; /* 確保說明欄佔滿整個寬度 */
+    background-color: var(--wood-light); /* 使用淺木色作為背景，突顯區塊 */
+    padding: 1.2rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.comparison-col.explanation h4 {
+    border-bottom: none; /* 說明區的標題不需要底線 */
+    margin-bottom: 0.5rem;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.accordion-header {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--primary-text-color);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-family);
+}
+
+.accordion-header::after {
+    content: '+';
+    font-size: 1.3rem;
+    color: var(--accent-color);
+    transition: transform 0.3s;
+}
+
+.accordion-header.active::after {
+    transform: rotate(45deg);
+}
+
+.accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+    background-color: var(--card-bg-color);
+}
+
+.accordion-content {
+    padding: 1rem;
+    line-height: 1.7;
+    border-top: 1px solid var(--border-color);
+    color: var(--primary-text-color);
+}
+
+/* --- 立委政黨顏色 --- */
+.legislator-name {
+    font-weight: 500;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+    display: inline-block;
+    margin: 2px;
+    font-size: 0.85rem;
+}
+
+.party-dpp {
+    color: #2d5a3d;
+    background-color: rgba(45, 90, 61, 0.1);
+}
+
+.party-kmt {
+    color: #2c4a6b;
+    background-color: rgba(44, 74, 107, 0.1);
+}
+
+.party-tpp {
+    color: #3bb1b9;
+    background-color: rgba(123, 183, 183, 0.1);
+}
+
+.party-pfp {
+    color: #8b7355;
+    background-color: rgba(139, 115, 85, 0.1);
+}
+
+.party-independent {
+    color: var(--secondary-text-color);
+    background-color: var(--wood-medium);
+}
+
+/* --- 載入和錯誤狀態 --- */
+.loading-text, .error-text {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--secondary-text-color);
+    padding: 2rem;
+    font-weight: 300;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- 響應式設計 --- */
+/* For tablets and medium screens (769px to 1200px) */
+@media (max-width: 1200px) {
+    .dashboard-layout {
+        display: grid; /* 確認啟用 Grid 排版 */
+        /* 建立一個兩欄的佈局 */
+        grid-template-columns: 1fr 1fr; 
+        gap: 1.5rem;
+        
+        /* * 這就是排版的魔法核心：
+         * 我們定義了網格的區域名稱。
+         * 第一行是 'ranking' 和 'list' 區域。
+         * 第二行整個都由 'viz' (visualization) 區域佔據。
+        */
+        grid-template-areas:
+            "viz     list"
+            "ranking ranking";
+    }
+
+    /* 將指定的面板放入對應的網格區域 */
+    #bill-ranking-panel {
+        grid-area: ranking; /* 放入名為 'ranking' 的格子 */
+    }
+
+    #bill-list-panel {
+        grid-area: list; /* 放入名為 'list' 的格子 */
+    }
+
+    #visualization-container {
+        grid-area: viz; /* 放入名為 'viz' 的格子 */
+    }
+}
+
+/* For mobile phones (up to 768px) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 0.5rem;
+    }
+
+    .dashboard-layout {
+        /* 在更窄的螢幕上，我們恢復單欄佈局，以確保內容不會被擠壓 */
+        grid-template-columns: 1fr; 
+        /* 取消區域命名，恢復正常的文檔流堆疊 */
+        grid-template-areas: initial; 
+    }
+
+    /* * 雖然恢復了單欄，但我們可以用 'order' 屬性來控制堆疊的順序 
+     * 數字越小，越靠前。
+    */
+
+    #bill-list-panel {
+        grid-area: auto; /* 新增：重設網格區域，解決重疊問題 */
+        order: 1;        /* 第一個顯示 (法案列表) */
+    }
+
+    #bill-ranking-panel {
+        grid-area: auto; /* 新增：重設網格區域，解決重疊問題 */
+        order: 3;        /* 第二個顯示 (熱門法案) */
+    }
+
+    #visualization-container {
+        grid-area: auto; /* 新增：重設網格區域，解決重疊問題 */
+        order: 2;        /* 第三個顯示 (法案趨勢圖) */
+    }
+    
+    header {
+        padding: 0.6rem;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .intro-guide-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .controls-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .time-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+    }
+    
+    .time-input-group {
+        justify-content: space-between;
+    }
+    
+    .time-input-group select {
+        min-width: auto;
+        flex: 1;
+        margin-left: 0.5rem;
+    }
+    
+    .time-buttons, .search-buttons {
+        justify-content: center;
+    }
+    
+    .search-controls {
+        gap: 0.5rem;
+    }
+    
+    .category-label {
+        width: 100px;
+        font-size: 0.8rem;
+    }
+    
+    .bill-ranking-panel, .visualization-panel, .bill-list-panel {
+        padding: 1rem;
+    }
+    
+    #modal-body {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    
+    header p {
+        font-size: 0.95rem;
+    }
+    
+    .intro-guide {
+        padding: 1rem;
+    }
+    
+    .controls-wrapper {
+        padding: 1rem;
+    }
+    
+    .category-label {
+        width: 80px;
+        font-size: 0.75rem;
+    }
+    
+    .time-input-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.3rem;
+    }
+    
+    .time-input-group label {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* --- 進度頁面專用樣式 --- */
+
+/* 篩選容器樣式 */
+.filter-container {
+    padding: 0;
+}
+
+.filter-container h3 {
+    color: var(--primary-text-color);
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.filter-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    color: var(--secondary-text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.filter-group select {
+    padding: 6px 10px;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg-color);
+    color: var(--primary-text-color);
+    font-size: 0.85rem;
+    min-width: 120px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-family: var(--font-family);
+    flex: 1;
+}
+
+.filter-group select:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(107, 142, 127, 0.1);
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+/* 進度統計區塊 */
+.progress-stats-section {
+    margin-bottom: 2rem;
+}
+
+.progress-stats-section h2 {
+    color: var(--primary-text-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.progress-stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.progress-stat-card {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius-large);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 20px var(--shadow-color);
+}
+
+.progress-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-color), var(--warm-accent));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.progress-stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px var(--shadow-color);
+    border-color: var(--accent-color);
+}
+
+.progress-stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.progress-stat-card.active {
+    border-color: var(--accent-color);
+    background: linear-gradient(135deg, var(--accent-color-light) 0%, var(--wood-light) 100%);
+}
+
+.progress-stat-card.active::before {
+    transform: scaleX(1);
+}
+
+.progress-stat-icon {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.progress-stat-content {
+    text-align: center;
+}
+
+.progress-stat-content h3 {
+    color: var(--primary-text-color);
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.progress-stat-count {
+    color: var(--accent-color);
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    line-height: 1;
+}
+
+.progress-stat-content p {
+    color: var(--secondary-text-color);
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+/* 法案列表區塊 */
+.bill-list-section {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    border-radius: var(--border-radius-large);
+    padding: 2rem;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.bill-list-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            rgba(139, 115, 85, 0.02) 20px,
+            rgba(139, 115, 85, 0.02) 40px
+        );
+    border-radius: var(--border-radius-large);
+    pointer-events: none;
+}
+
+.bill-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-color);
+    position: relative;
+    z-index: 1;
+}
+
+.bill-list-header h2 {
+    margin: 0;
+    color: var(--primary-text-color);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.bill-list-info {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+    background-color: var(--wood-medium);
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.bill-container {
+    position: relative;
+    z-index: 1;
+}
+
+.pagination-container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .progress-stats-container {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .progress-stat-card {
+        padding: 1rem;
+    }
+    
+    .progress-stat-icon {
+        font-size: 1.5rem;
+    }
+    
+    .progress-stat-count {
+        font-size: 1.5rem;
+    }
+    
+    .bill-list-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .progress-stats-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .bill-list-section {
+        padding: 1rem;
+    }
+}
+
+
+
+/* --- 政黨分析頁面專用樣式 --- */
+
+/* 統計資訊容器 */
+.stats-container {
+    padding: 0;
+}
+
+.stats-container h3 {
+    color: var(--primary-text-color);
+    margin: 0 0 1rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+#stats-display {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem;
+    background-color: var(--wood-light);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.stat-label {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.stat-value {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* 政黨分析佈局 */
+.party-analysis-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+/* 圖表面板 */
+.chart-panel {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    padding: 1.5rem;
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.chart-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 20px,
+            rgba(139, 115, 85, 0.02) 20px,
+            rgba(139, 115, 85, 0.02) 40px
+        );
+    border-radius: var(--border-radius-large);
+    pointer-events: none;
+}
+
+.chart-panel h2 {
+    margin-top: 0;
+    color: var(--primary-text-color);
+    padding-bottom: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    border-bottom: 2px solid var(--border-color);
+    z-index: 1;
+}
+
+.chart-panel h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    margin: 1.5rem 0;
+    z-index: 1;
+}
+
+/* 無黨籍統計框 */
+.independent-stats-box {
+    background: linear-gradient(135deg, var(--accent-color-light) 0%, var(--wood-light) 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.independent-stats-box h3 {
+    margin: 0 0 1rem 0;
+    color: var(--primary-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.independent-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.independent-count,
+.independent-rate-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.count-label,
+.rate-label {
+    color: var(--secondary-text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.count-value,
+.rate-value {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.view-bills-btn {
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-family: var(--font-family);
+    box-shadow: 0 2px 8px rgba(107, 142, 127, 0.3);
+}
+
+.view-bills-btn:hover {
+    background-color: #5a7a6b;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 142, 127, 0.4);
+}
+
+/* 響應式設計 */
+@media (max-width: 1200px) {
+    .party-analysis-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .chart-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .chart-container {
+        height: 300px;
+    }
+    
+    .independent-content {
+        gap: 0.6rem;
+    }
+    
+    .stat-item {
+        padding: 0.5rem;
+    }
+}
+
+/* 載入和錯誤狀態 */
+.loading-text {
+    text-align: center;
+    color: var(--secondary-text-color);
+    font-style: italic;
+    padding: 2rem;
+}
+
+.error-text {
+    text-align: center;
+    color: #d32f2f;
+    font-weight: 500;
+    padding: 2rem;
+    background-color: rgba(211, 47, 47, 0.1);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(211, 47, 47, 0.2);
+}
+
+/* --- About 頁面專用樣式 --- */
+
+/* --- About 頁面專用樣式 (V3 - 支援進度條標籤) --- */
+
+.about-page-content {
+    max-width: 960px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* ✨ 調整 header 內部排版，讓兩個導覽列能正確顯示 ✨ */
+header .navigation-links {
+    margin-top: 1.5rem; /* 與上方導覽列增加間距 */
+}
+
+/* About 頁面內部導航 */
+.about-page-navigation {
+    display: flex;
+    flex-wrap: wrap; /* 在小螢幕時允許換行 */
+    justify-content: center; /* 置中對齊 */
+    gap: 1rem 1.5rem; /* 垂直與水平間距 */
+    margin-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.about-nav-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    padding-bottom: 0.3rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-size: 0.95rem;
+}
+
+.about-nav-link:hover,
+.about-nav-link:focus {
+    color: var(--primary-text-color);
+    border-bottom-color: var(--primary-text-color); /* 修改為 hover 時變色 */
+}
+
+
+.about-section {
+    background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+    padding: 2.5rem;
+    border-radius: var(--border-radius-large);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    border: 1px solid var(--border-color);
+}
+
+.about-section h2 {
+    margin-top: 0;
+    color: var(--primary-text-color);
+    padding-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    position: relative;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1.8rem;
+}
+
+.about-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.about-section p, .about-section ul {
+    color: var(--primary-text-color);
+    line-height: 1.9;
+    font-size: 1.1rem;
+}
+
+.about-section ul {
+    padding-left: 25px;
+}
+
+.about-section li {
+    margin-bottom: 1rem;
+}
+
+/* 更新日誌 */
+.changelog-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.changelog-entry {
+    border-left: 3px solid var(--accent-color);
+    padding-left: 1.8rem;
+}
+
+.changelog-entry h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.25rem;
+    color: var(--primary-text-color);
+}
+
+/* 未來藍圖 (進度條) */
+.roadmap-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.roadmap-goal {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+}
+.roadmap-goal:first-child{
+    border-top: none;
+    padding-top: 0;
+}
+
+.roadmap-goal h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.25rem;
+    color: var(--primary-text-color);
+}
+
+/* ✨ --- 進度條核心修改 --- ✨ */
+.progress-bar {
+    width: 100%;
+    background-color: var(--wood-medium);
+    border-radius: var(--border-radius);
+    height: 28px; /* 稍微加高以容納文字 */
+    overflow: hidden;
+    margin: 1rem 0 0.8rem 0;
+    border: 1px solid var(--border-color);
+    position: relative; /* 關鍵：讓子元素可以用絕對定位 */
+    display: flex; /* 使用 flexbox 來對齊內部元素 */
+    align-items: center; /* 垂直置中 */
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background-color: var(--accent-color);
+    border-radius: var(--border-radius);
+    transition: width 0.5s ease-in-out;
+    z-index: 1; /* 確保在底層 */
+}
+
+.progress-bar-label {
+    position: absolute; /* 關鍵：讓標籤脫離文檔流，疊在進度條上 */
+    right: 0; /* 定位在最右邊 */
+    top: 50%; /* 垂直置中 */
+    transform: translateY(-50%); /* 垂直置中校正 */
+    padding: 0 1rem; /* 左右留白 */
+    color: var(--secondary-text-color);
+    font-size: 0.85rem;
+    font-weight: 500;
+    z-index: 2; /* 確保在最上層 */
+    white-space: nowrap;
+}
+/* ✨ --- 修改結束 --- ✨ */
+
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+}
+.progress-labels span:nth-child(2) {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* 回饋按鈕 */
+.feedback-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: var(--warm-accent);
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+.feedback-btn:hover {
+     background-color: #b8896a;
+}
+
+/* 經費透明表格 */
+.transparency-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.transparency-table th, .transparency-table td {
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--border-color);
+    text-align: left;
+    font-size: 1rem;
+}
+.transparency-table thead {
+    background-color: var(--wood-light);
+}
+.transparency-table th {
+    font-weight: 500;
+}
+.transparency-table .summary-row, .transparency-table .funding-row {
+    background-color: var(--accent-color-light);
+}
+.transparency-table .funding-row strong {
+    color: var(--accent-color);
+}
+
+/* 募款資訊 */
+.donation-info-box {
+    background-color: var(--wood-light);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin: 1rem 0;
+}
+.donation-info-box h3 {
+    margin-top: 0;
+    font-size: 1.25rem;
+    color: var(--primary-text-color);
+}
+.donation-info-box p {
+    font-size: 1.1rem;
+}
+
+.donation-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.donation-link {
+    background-color: var(--accent-color);
+    padding: 12px 24px;
+    font-size: 1rem;
+}
+.donation-link:hover {
+    background-color: #5a7a6b;
+}
+
+/* --- ✨ 進度條達成目標時的額外樣式 --- */
+
+/* 當 .progress-bar 容器擁有 .is-complete class 時... */
+.progress-bar.is-complete .progress-bar-inner {
+    /* ...其內部的 .progress-bar-inner 元素背景變為紅色 */
+    background-color: #c82333; /* 一個沉穩的紅色，您可以換成喜歡的顏色 */
+}
+
+.progress-bar.is-complete .progress-bar-label {
+    /* ...其內部的 .progress-bar-label 元素文字變為白色，以確保清晰可讀 */
+    color: white;
+    font-weight: 600; /* 加粗字體 */
+}
