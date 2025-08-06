@@ -28,7 +28,7 @@ WEB_FOLDER_PATH = WEB_FOLDER_PATH = os.path.join(BASE_DIR, "web")
 DATA_FOLDER = DATA_FOLDER = os.path.join(BASE_DIR, "storage", "ai_output")
 
 # 初始化 Flask，並告訴它去哪裡找樣板和靜態檔案
-app = Flask(__name__, template_folder=WEB_FOLDER_PATH, static_folder=WEB_FOLDER_PATH)
+app = Flask(__name__, template_folder=WEB_FOLDER_PATH, static_folder=WEB_FOLDER_PATH, static_url_path='/')
 # 確保回傳的 JSON 能正確顯示中文
 app.config['JSON_AS_ASCII'] = False
 
