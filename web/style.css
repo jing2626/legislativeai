@@ -320,6 +320,7 @@ header p {
     display: flex;          /* 新增：將此容器設定為 Flexbox 佈局 */
     justify-content: center;/* 新增：讓所有項目在容器內水平置中 */
     gap: 1.0rem;
+    flex-wrap: wrap; /*新增：允許項目在空間不足時換行 */
 }
 
 .nav-link {

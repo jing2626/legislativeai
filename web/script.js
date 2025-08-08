@@ -354,6 +354,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 barWrapper.classList.add('active');
                 fetchAndDisplayBills(categoryKey, fullCategoryName)
+                if (window.matchMedia('(max-width: 768px)').matches) {
+                    // 找到要捲動到的目標元素，也就是法案列表的容器
+                    const billListPanel = document.getElementById('bill-list-panel');
+                    
+                    // 確保目標元素存在
+                    if (billListPanel) {
+                        // 將頁面平滑地捲動到該元素的位置
+                        billListPanel.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             });
         });
         visualizationContainer.appendChild(chart);

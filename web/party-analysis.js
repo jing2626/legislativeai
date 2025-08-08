@@ -397,6 +397,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         const index = elements[0].index;
                         const partyType = partyTypes[index];
                         loadPartyBills(partyType);
+
+                        // --- ✨ 新增的捲動邏輯開始 ✨ ---
+                        // 判斷是否為手機尺寸
+                        if (window.matchMedia('(max-width: 768px)').matches) {
+                            // 找到法案列表的標題作為捲動目標
+                            const billListTitle = document.getElementById('bill-list-title');
+
+                            if (billListTitle) {
+                                // 平滑地捲動到目標位置
+                                billListTitle.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                        // --- ✨ 新增的捲動邏輯結束 ✨ ---
                     }
                 }
             }
