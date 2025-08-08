@@ -237,11 +237,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const proposers = bill.proposers.join(' ').toLowerCase();
             const cosigners = bill.cosigners.join(' ').toLowerCase();
             const reason = (bill.reason || '').toLowerCase();
+
+            // --- ✨ 新增對比法條內文 ✨ ---
+            let articleContent = '';
+            if (bill.comparison_table && bill.comparison_table.length > 0) {
+                bill.comparison_table.forEach(item => {
+                    // 將「修正條文」、「現行條文」、「說明」的文字都串接起來
+                    articleContent += (item.modified_text || '') + ' ';
+                    articleContent += (item.current_text || '') + ' ';
+                    articleContent += (item.explanation || '') + ' ';
+                });
+            }
+            articleContent = articleContent.toLowerCase(); // 將所有法條內容轉為小寫
+            // --- ✨ 新增的程式碼結束 ✨ ---
             
             return billTitle.includes(searchTerm) || 
                    proposers.includes(searchTerm) || 
                    cosigners.includes(searchTerm) ||
-                   reason.includes(searchTerm);
+                   reason.includes(searchTerm) ||
+                   articleContent.includes(searchTerm); // ✨ 新增的比對條件
         });
         
         fullBillListForCategory = filteredBills;
