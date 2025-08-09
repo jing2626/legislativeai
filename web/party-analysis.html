@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>政黨提案分析 | 立法院議案智慧查詢系統</title>
-     <meta name="description" content="運用 AI 技術，輕鬆查詢立法院最新法案，提供 AI 白話文解說、條文差異比較、法案進度追蹤與政黨提案分析，讓您快速掌握國會動態。">
+    <title>法條魚：立法議案智慧查詢系統-政黨分析 | AI 立法白話文分析、法案進度追蹤</title>
+    <meta name="description" content="運用 AI 技術，輕鬆查詢立法院最新法案，提供 AI 白話文解說、條文差異比較、法案進度追蹤與政黨提案分析，讓您快速掌握國會動態。">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>政黨提案分析</h1>
+            <h1>法條魚-政黨提案分析</h1>
             <p>分析各政黨在立法院的提案參與情況與跨黨派合作模式</p>
             
             <!-- 控制功能區塊 -->
@@ -63,6 +64,7 @@
                 <div class="navigation-links">
                     <a href="/" class="nav-link">🏠 回到首頁</a>
                     <a href="/progress" class="nav-link">📊 查看進度分析</a>
+                    <a href="/compare" class="nav-link">🔍 法案版本比較</a>
                     <a href="/about" class="nav-link">ℹ️ 本站公開資訊與問題回饋</a> 
                 </div>
             </div>

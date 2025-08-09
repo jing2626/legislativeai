@@ -573,6 +573,12 @@ def get_venn_data(year, month):
         print(f"處理維恩圖資料時發生錯誤: {e}")
         abort(500, description="處理維恩圖資料時發生內部錯誤。")
 
+# 【新增的路由】
+@app.route('/compare')
+def compare_page():
+    """提供同名法案比較的專用頁面"""
+    return render_template('compare.html')
+
 
 # --- 5. 啟動伺服器 ---
 

@@ -1007,6 +1007,24 @@ header p {
     #modal-body {
         padding: 1.5rem;
     }
+    
+    .comparison-view-table th:nth-child(1), /* "提案版本" 標題 */
+    .comparison-view-table td:nth-child(1)   /* "提案版本" 內容 */
+    {
+        width: 13%; /* 您可以調整這個百分比，讓它更窄 */
+        white-space: normal; /* 允許文字正常換行 */
+        overflow-wrap: break-word; /* 長單字在必要時斷行 */
+        text-overflow: clip; /* 超出部分直接剪裁，不再顯示省略符號 *//
+    }
+
+    .comparison-view-table th:nth-child(2), /* "條文內容" 標題 */
+    .comparison-view-table td:nth-child(2),   /* "條文內容" 內容 */
+    .comparison-view-table th:nth-child(3), /* "說明" 標題 */
+    .comparison-view-table td:nth-child(3)   /* "說明" 內容 */
+    {
+        width: auto; /* 剩餘空間自動分配 */
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -1290,6 +1308,7 @@ header p {
         align-items: stretch;
         gap: 0.3rem;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -1781,3 +1800,4 @@ header .navigation-links {
     color: white;
     font-weight: 600; /* 加粗字體 */
 }
+

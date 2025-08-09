@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>同名法案版本比較 | 法條魚</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <script src="{{ url_for('static', filename='diff.min.js') }}"></script>
+
+    <style>
+        /* 新增的專用樣式 */
+        .comparison-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            margin-top: 2rem;
+        }
+        .version-list-panel, .content-display-panel {
+            background: linear-gradient(135deg, var(--card-bg-color) 0%, var(--wood-light) 100%);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-large);
+            box-shadow: 0 4px 20px var(--shadow-color);
+            border: 1px solid var(--border-color);
+            min-height: 500px;
+        }
+        .version-list-panel h2, .content-display-panel h2 {
+            margin-top: 0;
+            color: var(--primary-text-color);
+            padding-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            border-bottom: 2px solid var(--border-color);
+        }
+        #initial-search-results .bill-card {
+            cursor: pointer;
+        }
+        .version-item {
+            padding: 0.8rem;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: var(--border-radius);
+        }
+        .version-item:hover {
+            background-color: var(--accent-color-light);
+        }
+        .version-item.selected {
+            background-color: var(--accent-color-light);
+            border-left: 4px solid var(--accent-color);
+        }
+        .version-item h4 { margin: 0 0 0.3rem 0; font-size: 0.95rem; }
+        .version-item p { margin: 0; font-size: 0.8rem; color: var(--secondary-text-color); }
+
+        /* 右側比較表格 */
+        .comparison-view-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        .comparison-view-table th, .comparison-view-table td {
+            border: 1px solid var(--border-color);
+            padding: 1rem;
+            vertical-align: top;
+            line-height: 1.7;
+        }
+        .comparison-view-table thead th {
+            background-color: var(--wood-light);
+            font-weight: 500;
+        }
+
+        /* 用於標示差異的 CSS 樣式 */
+        .diff-added {
+            color: #b30000; /* 深紅色文字 */
+            background-color: #ffe5e5; /* 淡紅色背景 */
+            font-weight: bold;
+            padding: 1px 2px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>法案版本比較</h1>
+            <p>輸入法案關鍵字，尋找並比較不同黨派提出的版本</p>
+            <!-- 簡化的使用者引導區塊 -->
+            <div class="intro-guide">
+                <div class="intro-guide-content">
+                    <div class="icon">🧐</div>
+                    <div class="intro-guide-text">
+                        <h3>法案版本比較</h3>
+                        <p>先輸入想要查找法案的關鍵字，找到法案後點擊，就可以把不同黨派版本納入比較囉!</p>
+                    </div>
+                </div>
+            </div>
+             <div class="navigation-links">
+                <a href="/" class="nav-link">🏠 回到首頁</a>
+                <a href="/progress" class="nav-link">📊 查看進度分析</a>
+                <a href="/party-analysis" class="nav-link">🏛️ 政黨提案分析</a>
+                <a href="/about" class="nav-link">ℹ️ 本站公開資訊與問題回饋</a> 
+            </div>
+        </header>
+
+        <div class="search-container" style="max-width: 800px; margin: 1rem auto; padding: 1.5rem; background: var(--card-bg-color); border-radius: var(--border-radius-large); box-shadow: 0 4px 20px var(--shadow-color);">
+            <h3>🔍 搜尋法案</h3>
+            <div class="search-controls" style="flex-direction: row; gap: 1rem;">
+                <input type="text" id="search-input" placeholder="輸入法案關鍵字，例如：托育、勞動基準..." style="flex-grow: 1;"/>
+                <div class="search-buttons">
+                    <button id="search-btn">搜尋</button>
+                    <button id="clear-search-btn">清除</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="results-area">
+            <div id="initial-search-results-panel" class="bill-list-panel" style="display:none;">
+                <h2 id="initial-search-title">請選擇一個基準法案</h2>
+                <div id="initial-search-results"></div>
+            </div>
+
+            <div id="comparison-interface" class="comparison-layout" style="display:none;">
+                <aside id="party-version-list" class="version-list-panel">
+                    <h2>各黨派最終版本</h2>
+                    <div id="version-container">
+                        <p class="loading-text">請先從搜尋結果中選擇一個法案</p>
+                    </div>
+                </aside>
+
+                <section id="content-display" class="content-display-panel">
+                    <h2 id="content-title">法案內容</h2>
+                    <div id="content-body">
+                        <p class="loading-text">請從左側選擇一個或多個版本進行查看</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='compare_versions.js') }}"></script>
+</body>
+</html>
+
