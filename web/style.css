@@ -1011,7 +1011,7 @@ header p {
     .comparison-view-table th:nth-child(1), /* "提案版本" 標題 */
     .comparison-view-table td:nth-child(1)   /* "提案版本" 內容 */
     {
-        width: 13%; /* 您可以調整這個百分比，讓它更窄 */
+        width: 18%; /* 您可以調整這個百分比，讓它更窄 */
         white-space: normal; /* 允許文字正常換行 */
         overflow-wrap: break-word; /* 長單字在必要時斷行 */
         text-overflow: clip; /* 超出部分直接剪裁，不再顯示省略符號 *//
