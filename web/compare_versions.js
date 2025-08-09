@@ -346,7 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function normalizeBillTitle(bill) {
         const title = getBillTitle(bill);
-        return title.replace(/修正|增訂|廢止|制定|部分條文|草案/g, '').replace(/第\S+條/g, '').trim();
+        return title.replace(/修正|增訂|廢止|制定|部分條文|草案/g, '').trim();
     }
     function normalizeName(name) {
         return name ? name.replace(/[\s‧.-]/g, '') : '';
